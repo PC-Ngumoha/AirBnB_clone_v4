@@ -3,7 +3,7 @@
 app.py - contains the app instantiation.
 """
 from api.v1.views import app_views
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from os import getenv
 
@@ -17,6 +17,12 @@ app.register_blueprint(app_views)
 def teardown_db_connection(exc):
     """Close current DB session"""
     storage.close()
+
+
+@app.errorhandler(404)
+def handle_404_error(err):
+    """Return 404 JSON error message"""
+    return jsonify(error='Not Found'), 404
 
 
 if __name__ == '__main__':
