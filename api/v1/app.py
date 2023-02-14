@@ -22,7 +22,7 @@ def teardown_db_connection(exc):
 @app.errorhandler(404)
 def handle_404_error(err):
     """Return 404 JSON error message"""
-    return jsonify(error='Not Found')
+    return jsonify(error='Not found'), 404
 
 
 if __name__ == '__main__':
