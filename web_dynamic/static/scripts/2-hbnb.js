@@ -3,8 +3,9 @@
  */
 
 $(function () {
-  $('.amenities .popover input').on('click', function () {
-    const amenities = [];
+  const amenities = [];
+
+  $('.amenity-check').on('click', function () {
     const amenity = {
       id: $(this).attr('data-id'),
       name: $(this).attr('data-name')
@@ -23,8 +24,13 @@ $(function () {
     // Update the h4 with the list of amenities in the array
     const amenityNames = amenities.map(a => a.name);
     const selectAmenities = amenityNames.join(', ');
-    $('.amenities h4').text(selectAmenities);
+    if (selectAmenities.length > 20) {
+      $('h4.select-amenities').text(selectAmenities.substring(0, 19) + '...');
+    } else {
+      $('h4.select-amenities').text(selectAmenities);
+    }
   });
+  
   $.get('http://0.0.0.0:5001/api/v1/status/', function (resp) {
     if (resp.status === 'OK') {
       $('div#api_status').addClass('available');
