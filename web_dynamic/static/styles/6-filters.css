@@ -91,3 +91,10 @@ section.filters > button:hover {
     margin-left: 50px;
     margin-bottom: 10px;
 }
+
+.amenities > .popover > li > input[type="checkbox"],
+.amenities > .popover > li > h4 {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+}
