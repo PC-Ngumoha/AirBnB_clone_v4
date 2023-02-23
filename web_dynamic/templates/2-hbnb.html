@@ -16,12 +16,13 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js?{{ cache_id }}"></script>
 
 	<!-- Importing my script -->
-	<script src="static/scripts/1-hbnb.js?{{ cache_id }}"></script>
+	<script src="static/scripts/2-hbnb.js?{{ cache_id }}"></script>
 </head>
 
 <body>
 	<header>
 		<div id="header_logo"></div>
+		<div id="api_status" class="available"></div>
 	</header>
 	<div class="container">
 		<section class="filters">
@@ -46,12 +47,11 @@
 			</div>
 			<div class="amenities">
 				<h3>Amenities</h3>
-				<h4 class="select-amenities">&nbsp;</h4>
+				<h4>&nbsp;</h4>
 				<ul class="popover">
 					{% for amenity in amenities|sort(attribute='name') %}
 					<li>
-						<input class="amenity-check" type="checkbox" data-id="{{ amenity.id }}"
-							data-name="{{ amenity.name }}">
+						<input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">
 						<h4>{{ amenity.name }}</h4>
 					</li>
 					{% endfor %}
