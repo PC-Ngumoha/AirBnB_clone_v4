@@ -3,10 +3,14 @@
 app.py - contains the app instantiation.
 """
 from api.v1.views import app_views
+from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
 from models import storage
 from os import getenv
+
+
+load_dotenv()  # Load environment variables from .env file
 
 
 app = Flask(__name__)
@@ -30,4 +34,4 @@ def handle_404_error(err):
 if __name__ == '__main__':
     HBNB_API_HOST = getenv('HBNB_API_HOST')
     HBNB_API_PORT = getenv('HBNB_API_PORT')
-    app.run(host=HBNB_API_HOST, port=HBNB_API_PORT, threaded=True)
+    app.run(host=HBNB_API_HOST, port=HBNB_API_PORT, threaded=True, debug=True)
