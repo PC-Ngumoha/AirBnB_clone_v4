@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 """ Renders a Web page with the list of all the States stores on the DB
 """
+from dotenv import load_dotenv
 from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.amenity import Amenity
 from models.place import Place
+from os import getenv
 import uuid
+
+load_dotenv()  # Load environment variables
 
 app = Flask(__name__)
 
@@ -29,4 +33,6 @@ def display_states_list():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    HOST = getenv('HBNB_API_HOST')
+    PORT = getenv('HBNB_API_PORT')
+    app.run(host=HOST, port=PORT, debug=True)
