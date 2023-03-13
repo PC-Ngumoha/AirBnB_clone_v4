@@ -31,7 +31,7 @@ $(function () {
     }
   });
   
-  $.get('http://0.0.0.0:5001/api/v1/status/', function (resp) {
+  $.get('http://0.0.0.0:5003/api/v1/status/', function (resp) {
     if (resp.status === 'OK') {
       $('div#api_status').addClass('available');
     } else {
